@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-// import { FeedBackOptions } from './FeedBackOptions/FeedBackOptions
-import { Container } from "./Container/Container";
-import { Statistics } from "./Statistics/Statistics";
-import { FeedbackOptions } from "./FeedbackOptions/FeedbackOptions";
-import { Section } from "./Section/Section";
+import { Container } from "../Container/Container";
+import { Statistics } from "../Statistics/Statistics";
+import { FeedbackOptions } from "../FeedbackOptions/FeedbackOptions";
+import { Section } from "../Section/Section";
+import { Notification } from "../Notification/Notification";
 
 export class App extends Component {
   state = {
@@ -53,7 +53,7 @@ export class App extends Component {
             />
           </Section>
         ) : (
-          <p>No feedback given</p>
+          <Notification message={"No feedback given"} />
         )}
       </Container>
     );

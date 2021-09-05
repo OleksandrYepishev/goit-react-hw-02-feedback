@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import { Title } from "./Section.styled";
 
 export const Section = ({ title, children }) => {
   return (
     <Fragment>
-      <h2> {title}</h2>
+      <Title>{title}</Title>
       {children}
     </Fragment>
   );
