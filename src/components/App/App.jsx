@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Container } from "../Container/Container";
-import { Statistics } from "../Statistics/Statistics";
-import { FeedbackOptions } from "../FeedbackOptions/FeedbackOptions";
-import { Section } from "../Section/Section";
-import { Notification } from "../Notification/Notification";
+import React, { Component } from 'react';
+import { Container } from '../Container/Container';
+import { Statistics } from '../Statistics/Statistics';
+import { FeedbackOptions } from '../FeedbackOptions/FeedbackOptions';
+import { Section } from '../Section/Section';
+import { Notification } from '../Notification/Notification';
 
 export class App extends Component {
   state = {
@@ -12,8 +12,8 @@ export class App extends Component {
     bad: 0,
   };
 
-  OnInrement = (option) => {
-    this.setState((prevState) => {
+  onIncrement = option => {
+    this.setState(prevState => {
       return {
         [option]: prevState[option] + 1,
       };
@@ -25,24 +25,24 @@ export class App extends Component {
 
     return good + neutral + bad;
   };
-  countPositiveFeedbackPercentage = () => {
-    const { good, neutral, bad } = this.state;
 
-    return Math.round((good * 100) / (good + neutral + bad));
+  countPositiveFeedbackPercentage = () => {
+    return Math.round((this.state.good * 100) / this.countTotalFeedback());
   };
 
   render() {
     const { good, neutral, bad } = this.state;
+    const isShowStatistics = !!this.countTotalFeedback();
 
     return (
       <Container>
         <Section title="Please leave feedback">
           <FeedbackOptions
             options={this.state}
-            onLeaveFeedback={this.OnInrement}
+            onLeaveFeedback={this.onIncrement}
           />
         </Section>
-        {good || neutral || bad > 0 ? (
+        {isShowStatistics && (
           <Section title="Statistics">
             <Statistics
               good={good}
@@ -52,9 +52,9 @@ export class App extends Component {
               positiveFeedbacks={this.countPositiveFeedbackPercentage()}
             />
           </Section>
-        ) : (
-          <Notification message={"No feedback given"} />
         )}
+
+        {!isShowStatistics && <Notification message={'No feedback given'} />}
       </Container>
     );
   }

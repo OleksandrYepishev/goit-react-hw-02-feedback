@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const Btn = styled.button`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -6,4 +6,5 @@ export const Btn = styled.button`
   height: 35px;
   margin-right: 15px;
   text-transform: uppercase;
+  cursor: pointer;
 `;
